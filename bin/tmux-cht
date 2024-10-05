@@ -1,0 +1,19 @@
+#!/bin/bash
+
+selected=$(cat $HOME/bin/tmux-cht-languages $HOME/bin/tmux-cht-command | fzf)
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+if grep -qs "$selected" $HOME/bin/tmux-cht-languages; then
+    read -p "Enter syntax (optional): " syntax
+
+    if [[ -z $syntax ]]; then
+        tmux neww bash -c "curl cht.sh/$selected & while [ : ]; do sleep 1; done"
+    else
+        syntax=$(echo $syntax | tr ' ' '+')
+        tmux neww bash -c "curl cht.sh/$selected/$syntax & while [ : ]; do sleep 1; done"
+    fi
+else
+    tmux neww bash -c "curl cht.sh/$selected & while [ : ]; do sleep 1; done"
+fi

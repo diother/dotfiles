@@ -1,0 +1,12 @@
+[manager]
+show_hidden = true
+
+[preview]
+tab_size = 4
+max_width = 600
+max_height = 900
+
+[opener]
+extract = [
+	{ run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
+]

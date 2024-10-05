@@ -1,0 +1,16 @@
+#!/bin/bash
+
+TOTAL_MONTHS=$((75 * 12))
+BIRTH_DATE="2003-10-27"
+CURRENT_DATE=$(date +"%Y-%m-%d")
+MONTHS_LIVED=$(( ( $(date -d "$CURRENT_DATE" +%s) - $(date -d "$BIRTH_DATE" +%s) ) / (60*60*24*30) ))
+
+for ((i=0; i<TOTAL_MONTHS; i++)); do
+    if [ $i -lt $MONTHS_LIVED ]; then
+        echo -n "●"
+    else
+        echo -n "○"
+    fi
+done
+
+echo ""

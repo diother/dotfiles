@@ -44,5 +44,12 @@ return {
         end
       end)
     end)
+    vim.keymap.set("n", "<leader>cs", function()
+      vim.ui.input({ prompt = "Story name: " }, function(input)
+        if input then
+          vim.cmd("ObsidianNewFromTemplate /stories/" .. input)
+        end
+      end)
+    end)
   end,
 }

@@ -116,7 +116,7 @@ alias chatgpt='thorium-browser --app="https://chat.openai.com"'
 
 $HOME/bin/month-grid
 
-alias sshvm="ssh -i ssh-key.key ubuntu@129.152.24.252"
+alias sshvm1="ssh -i ssh-key-1.key ubuntu@129.152.24.252"
 
 yazi_insert_and_enter() {
   LBUFFER+="yazi"

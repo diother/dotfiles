@@ -25,7 +25,7 @@ require("lazy").setup({
   require "plugins/lspconfig",
   require "plugins/conform",
   require "plugins/cmp",
-  require "plugins/tokyonight",
+  -- require "plugins/tokyonight",
   require "plugins/treesitter",
   require "plugins/harpoon",
   require "plugins/zenmode",
@@ -33,6 +33,7 @@ require("lazy").setup({
   require "plugins/obsidian",
   require "plugins/fugitive",
   require "plugins/trouble",
+  require "plugins/midnight",
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and

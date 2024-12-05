@@ -13,22 +13,24 @@ local theme = {}
 
 theme.font = "monospace 11"
 
-theme.bg_normal = "#1a1b26" -- Darker background
-theme.bg_focus = "#24283b" -- Slightly brighter for focus
-theme.bg_urgent = "#f7768e" -- Bright red for urgency
-theme.bg_minimize = "#1f2335" -- Dimmed background for minimized
+local theme = {}
+
+theme.bg_normal = "#080c10" -- Darker background
+theme.bg_focus = "#262626" -- Slightly brighter for focus
+theme.bg_urgent = "#fa4d56" -- Bright red for urgency
+theme.bg_minimize = "#181818" -- Dimmed background for minimized
 theme.bg_systray = theme.bg_normal -- Same as normal background
 
-theme.fg_normal = "#a9b1d6" -- Lighter text color
-theme.fg_focus = "#bb9af7" -- Soft purple for focused text
-theme.fg_urgent = "#f7768e" -- Match urgent background color for contrast
-theme.fg_minimize = "#444b6a" -- Muted color for minimized text
+theme.fg_normal = "#b5bdc5" -- Lighter text color
+theme.fg_focus = "#a665d0" -- Soft purple for focused text
+theme.fg_urgent = "#fa4d56" -- Match urgent background color for contrast
+theme.fg_minimize = "#474747" -- Muted color for minimized text
 
 theme.useless_gap = dpi(0)
 theme.border_width = dpi(0)
-theme.border_normal = "#1a1b26" -- Dark border
-theme.border_focus = "#7aa2f7" -- Brighter border for focus
-theme.border_marked = "#f7768e" -- Marked border matches urgent
+theme.border_normal = "#080c10" -- Dark border
+theme.border_focus = "#5080ff" -- Brighter border for focus
+theme.border_marked = "#fa4d56" -- Marked border matches urgent
 
 theme.tasklist_disable_icon = true
 
@@ -68,7 +70,7 @@ theme.menu_width = dpi(100)
 -- beautiful.variable in your rc.lua
 --theme.bg_widget = "#cc0000"
 
-theme.wallpaper = "~/Documents/wallpapers/warrior.png"
+theme.wallpaper = "~/Documents/wallpapers/warrior-black.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)

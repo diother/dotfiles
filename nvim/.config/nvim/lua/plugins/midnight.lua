@@ -9,6 +9,9 @@ return {
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme "midnight"
 
+      vim.cmd "highlight Normal guibg=#000000"
+      vim.cmd "highlight SignColumn guibg=#000000"
+
       -- You can configure highlights by doing something like:
       vim.cmd.hi "Comment gui=none"
     end,

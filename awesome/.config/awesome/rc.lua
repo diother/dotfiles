@@ -337,7 +337,7 @@ globalkeys = gears.table.join(
 
 	-- Prompt
 	awful.key({ modkey }, "r", function()
-		awful.util.spawn("dmenu_run -fn 'monospace-14' -nb '#080c10' -nf '#b5bdc5' -sb '#262626' -sf '#5080ff'")
+		awful.util.spawn("dmenu_run -fn 'monospace-14' -nb '#000000' -nf '#b5bdc5' -sb '#262626' -sf '#5080ff'")
 	end, { description = "run prompt", group = "launcher" }),
 
 	awful.key({ modkey }, "x", function()
@@ -597,33 +597,23 @@ end)
 -- launch application at startup
 -- awful.spawn.with_shell("cd ~/personal/go-messenger && nohup ./tmp/main > ./build-errors.log 2>&1 &")
 awful.spawn.with_shell("kitty -e tmux")
--- awful.spawn.with_shell("megasync")
--- awful.spawn.with_shell("obsidian")
 awful.spawn.with_shell("mpv --force-window --loop ~/Documents/rain.m4a")
---
--- local urls = {
--- 	"",
--- 	"https://chat.openai.com",
--- }
---
+awful.spawn.with_shell("firefox -P default-esr --class='firefox-esr'")
+awful.spawn.with_shell("firefox -P chatgpt --class='chatgpt' --kiosk --new-window 'https://chatgpt.com'")
+
 local function move_app_to_tag(c)
 	local class_to_tag_mapping = {
-		-- ["thorium-browser"] = 2, -- browser index
-		-- ["obsidian"] = 7, -- obsidian index
-		-- ["chat.openai.com"] = 8, -- chatgpt index
-		["gl"] = 9, -- rain index
-		-- ["megasync"] = 5, -- megasync index
+		["firefox-esr"] = 2, -- browser index
+		["chatgpt"] = 8, -- chatgpt index
+		["mpv"] = 9, -- rain index
 	}
 
-	local class_name = c.instance or ""
+	local class_name = c.class or ""
 	local target_tag_index = class_to_tag_mapping[class_name]
 	if target_tag_index then
 		local target_tag = awful.screen.focused().tags[target_tag_index]
 		c:move_to_tag(target_tag)
 	end
 end
-client.connect_signal("manage", move_app_to_tag)
 
--- for _, url in ipairs(urls) do
--- 	awful.spawn.with_shell("thorium-browser --app='" .. url .. "'")
--- end
+client.connect_signal("manage", move_app_to_tag)

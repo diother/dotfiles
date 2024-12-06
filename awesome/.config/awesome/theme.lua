@@ -15,7 +15,7 @@ theme.font = "monospace 11"
 
 local theme = {}
 
-theme.bg_normal = "#080c10" -- Darker background
+theme.bg_normal = "#000000" -- Darker background
 theme.bg_focus = "#262626" -- Slightly brighter for focus
 theme.bg_urgent = "#fa4d56" -- Bright red for urgency
 theme.bg_minimize = "#181818" -- Dimmed background for minimized
@@ -28,7 +28,7 @@ theme.fg_minimize = "#474747" -- Muted color for minimized text
 
 theme.useless_gap = dpi(0)
 theme.border_width = dpi(0)
-theme.border_normal = "#080c10" -- Dark border
+theme.border_normal = "#000000" -- Dark border
 theme.border_focus = "#5080ff" -- Brighter border for focus
 theme.border_marked = "#fa4d56" -- Marked border matches urgent
 

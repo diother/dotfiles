@@ -595,11 +595,7 @@ client.connect_signal("unfocus", function(c)
 end)
 
 -- launch application at startup
--- awful.spawn.with_shell("cd ~/personal/go-messenger && nohup ./tmp/main > ./build-errors.log 2>&1 &")
 awful.spawn.with_shell("kitty -e tmux")
-awful.spawn.with_shell("mpv --force-window --loop ~/Documents/rain.m4a")
-awful.spawn.with_shell("firefox -P default-esr --class='firefox-esr'")
-awful.spawn.with_shell("firefox -P chatgpt --class='chatgpt' --kiosk --new-window 'https://chatgpt.com'")
 
 local function move_app_to_tag(c)
 	local class_to_tag_mapping = {
@@ -617,3 +613,8 @@ local function move_app_to_tag(c)
 end
 
 client.connect_signal("manage", move_app_to_tag)
+
+-- launch applications at startup
+awful.spawn.with_shell("mpv --force-window --loop ~/Documents/rain.m4a")
+awful.spawn.with_shell("firefox -P default-esr --class='firefox-esr'")
+awful.spawn.with_shell("firefox -P chatgpt --class='chatgpt' --kiosk --new-window 'https://chatgpt.com'")

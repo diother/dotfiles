@@ -39,7 +39,6 @@ keycode  45 = t T t T
 keycode  46 = n N n N
 keycode  47 = s S s S
 keycode  48 = minus underscore minus underscore
-keycode  49 = grave asciitilde grave asciitilde dead_grave dead_tilde dead_grave
 keycode  49 = dollar asciitilde dollar asciitilde dead_grave dead_tilde dead_grave
 keycode  50 = Shift_L NoSymbol Shift_L
 keycode  51 = backslash numbersign backslash numbersign

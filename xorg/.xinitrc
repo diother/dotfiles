@@ -28,7 +28,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCALE_FACTOR=2
+export QT_QPA_PLATFORMTHEME=gtk2
+
 exec awesome
-# /usr/bin/pipewire &
-# /usr/bin/pipewire-pulse &
-# /usr/bin/pipewire-media-session &

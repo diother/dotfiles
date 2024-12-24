@@ -361,7 +361,7 @@ clientkeys = gears.table.join(
 	-- end, { description = "toggle fullscreen", group = "client" }),
 	awful.key({ modkey }, "c", function(c)
 		c:kill()
-	end, { description = "close", group = "client" }),
+	end, { description = "request close", group = "client" }),
 	awful.key(
 		{ modkey, "Control" },
 		"space",
@@ -600,6 +600,7 @@ awful.spawn.with_shell("kitty -e tmux")
 local function move_app_to_tag(c)
 	local class_to_tag_mapping = {
 		["firefox-esr"] = 2, -- browser index
+		["resolve"] = 7, -- editor index
 		["chatgpt"] = 8, -- chatgpt index
 		["mpv"] = 9, -- rain index
 	}

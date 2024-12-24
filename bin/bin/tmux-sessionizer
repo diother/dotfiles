@@ -1,40 +1,47 @@
 #!/bin/bash
 
+set_custom_starting_directory() {
+    declare -A directory_map
+    directory_map["$HOME/dotfiles/awesome"]="$directory/.config/awesome"
+    directory_map["$HOME/dotfiles/bin"]="$directory/bin"
+    directory_map["$HOME/dotfiles/yazi"]="$directory/.config/yazi"
+    directory_map["$HOME/dotfiles/nvim"]="$directory/.config/nvim"
+    directory_map["$HOME/dotfiles/kitty"]="$directory/.config/kitty"
+
+    directory="${directory_map[$directory]:-$directory}"
+}
+
+run_custom_startup_script() {
+    declare -A startup_map
+    startup_map["$HOME/personal/brain"]='nvim 1-workspace/"Working memory.md" -c "lua vim.cmd([[ZenMode]])"'
+
+    if [[ -n ${startup_map[$directory]} ]]; then
+        tmux send-keys -t $tmux_session_name "${startup_map[$directory]}" C-m
+    else
+        tmux send-keys -t $tmux_session_name "nvim ." C-m
+    fi
+}
+
 if [[ $# -eq 1 ]]; then
-    selected=$1
+    directory=$1
 else
-    selected=$(find $HOME/dotfiles $HOME/work $HOME/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+    directory=$(find $HOME/dotfiles $HOME/work $HOME/personal -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
-if [[ -z $selected ]]; then
+if [[ -z $directory ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
+tmux_session_name=$(basename "$directory" | tr . _)
+set_custom_starting_directory
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    if [[ "$selected" == "$HOME/personal/brain" ]]; then
-        tmux new-session -ds $selected_name -c $selected
-        tmux send-keys -t $selected_name 'nvim 1-workspace/"Working memory.md" -c "lua vim.cmd([[ZenMode]])"' C-m
-    else
-        tmux new-session -s $selected_name -c $selected
-    fi
-    exit 0
-fi
-
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    if [[ "$selected" == "$HOME/personal/brain" ]]; then
-        tmux new-session -ds $selected_name -c $selected
-        tmux send-keys -t $selected_name 'nvim 1-workspace/"Working memory.md" -c "lua vim.cmd([[ZenMode]])"' C-m
-    else
-        tmux new-session -ds $selected_name -c $selected
-    fi
+if ! tmux has-session -t=$tmux_session_name 2> /dev/null; then
+    tmux new-session -ds $tmux_session_name -c $directory
+    run_custom_startup_script 
 fi
 
 if [[ -n $TMUX ]]; then
-    tmux switch-client -t $selected_name
+    tmux switch-client -t $tmux_session_name
 else
-    tmux attach -t $selected_name
+    tmux attach -t $tmux_session_name
 fi
-

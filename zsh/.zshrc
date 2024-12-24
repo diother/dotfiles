@@ -121,6 +121,7 @@ alias cdd="cd ~/Downloads"
 alias cdD="cd ~/Documents"
 alias cddf="cd ~/dotfiles"
 alias cdh="cd /mnt/hard/"
+alias cdv="cd ~/Videos"
 
 yazi_insert_and_enter() {
   LBUFFER+="yazi"

@@ -1,6 +1,6 @@
 [flavor]
-dark = "onedark"
 light = "onedark"
+dark = "onedark"
 
 # Border
 border_symbol = "│"

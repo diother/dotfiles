@@ -123,6 +123,8 @@ alias cddf="cd ~/dotfiles"
 alias cdh="cd /mnt/hard/"
 alias cdv="cd ~/Videos"
 
+alias vol="amixer set Master"
+
 yazi_insert_and_enter() {
   LBUFFER+="yazi"
   zle accept-line

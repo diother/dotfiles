@@ -108,8 +108,6 @@ source $ZSH/oh-my-zsh.sh
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vim='nvim'
-alias du='du -h --max-depth=1'
-alias df='df -h'
 
 alias figma='thorium-browser --app="https://figma.com"'
 alias chatgpt='thorium-browser --app="https://chat.openai.com"'
@@ -120,7 +118,6 @@ alias sshvm1="ssh -i ssh-key-1.key ubuntu@129.152.24.252"
 alias cdd="cd ~/Downloads"
 alias cdD="cd ~/Documents"
 alias cddf="cd ~/dotfiles"
-alias cdh="cd /mnt/hard/"
 alias cdv="cd ~/Videos"
 
 alias vol="amixer set Master"
@@ -131,3 +128,11 @@ yazi_insert_and_enter() {
 }
 zle -N yazi_insert_and_enter
 bindkey '^Y' yazi_insert_and_enter
+
+# pnpm
+export PNPM_HOME="/home/robert/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

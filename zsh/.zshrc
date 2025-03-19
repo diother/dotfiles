@@ -109,30 +109,22 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias vim='nvim'
 
-alias figma='thorium-browser --app="https://figma.com"'
-alias chatgpt='thorium-browser --app="https://chat.openai.com"'
-
 $HOME/bin/month-grid
 
-alias sshvm1="ssh -i ssh-key-1.key ubuntu@129.152.24.252"
 alias cdd="cd ~/Downloads"
 alias cdD="cd ~/Documents"
 alias cddf="cd ~/dotfiles"
 alias cdv="cd ~/Videos"
 
-alias vol="amixer set Master"
+alias vocal="cd ~/Videos/vocal-training"
+alias vocal-sync="rclone sync gdrive:/vocal-training/ ~/Videos/vocal-training/"
 
-yazi_insert_and_enter() {
-  LBUFFER+="yazi"
-  zle accept-line
-}
-zle -N yazi_insert_and_enter
-bindkey '^Y' yazi_insert_and_enter
+alias vol="alsamixer"
 
-# pnpm
-export PNPM_HOME="/home/robert/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# yazi_insert_and_enter() {
+#   LBUFFER+="yazi"
+#   zle accept-line
+# }
+# zle -N yazi_insert_and_enter
+# bindkey '^Y' yazi_insert_and_enter
+

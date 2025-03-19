@@ -9,7 +9,7 @@ def time_left():
     calculate the time left until 9:00 PM the next day.
     """
     now = datetime.now()
-    end_of_day = now.replace(hour=21, minute=0, second=0, microsecond=0)
+    end_of_day = now.replace(hour=20, minute=30, second=0, microsecond=0)
     if now > end_of_day:
         end_of_day += timedelta(days=1)
     diff = end_of_day - now

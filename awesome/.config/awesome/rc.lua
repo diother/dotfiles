@@ -97,9 +97,9 @@ myawesomemenu = {
 			hotkeys_popup.show_help(nil, awful.screen.focused())
 		end,
 	},
-	{ "manual", terminal .. " -e man awesome" },
+	{ "manual",      terminal .. " -e man awesome" },
 	{ "edit config", editor_cmd .. " " .. awesome.conffile },
-	{ "restart", awesome.restart },
+	{ "restart",     awesome.restart },
 	{
 		"quit",
 		function()
@@ -110,7 +110,7 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({
 	items = {
-		{ "awesome", myawesomemenu, beautiful.awesome_icon },
+		{ "awesome",       myawesomemenu, beautiful.awesome_icon },
 		{ "open terminal", terminal },
 	},
 })
@@ -264,7 +264,6 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
-
 	awful.key({ modkey }, "k", function()
 		awful.client.focus.byidx(1)
 	end, { description = "focus next by index", group = "client" }),
@@ -301,7 +300,6 @@ globalkeys = gears.table.join(
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
-
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
@@ -355,10 +353,10 @@ globalkeys = gears.table.join(
 )
 
 clientkeys = gears.table.join(
-	-- awful.key({ modkey }, "f", function(c)
-	-- 	c.fullscreen = not c.fullscreen
-	-- 	c:raise()
-	-- end, { description = "toggle fullscreen", group = "client" }),
+-- awful.key({ modkey }, "f", function(c)
+-- 	c.fullscreen = not c.fullscreen
+-- 	c:raise()
+-- end, { description = "toggle fullscreen", group = "client" }),
 	awful.key({ modkey }, "c", function(c)
 		c:kill()
 	end, { description = "request close", group = "client" }),
@@ -602,7 +600,7 @@ local function move_app_to_tag(c)
 		["firefox-esr"] = 2, -- browser index
 		["resolve"] = 7, -- editor index
 		["chatgpt"] = 8, -- chatgpt index
-		["mpv"] = 9, -- rain index
+		["mpv"] = 9,   -- rain index
 	}
 
 	local class_name = c.class or ""
@@ -619,3 +617,6 @@ client.connect_signal("manage", move_app_to_tag)
 awful.spawn.with_shell("mpv --force-window --loop ~/Documents/rain.m4a")
 awful.spawn.with_shell("firefox -P default-esr --class='firefox-esr'")
 awful.spawn.with_shell("firefox -P chatgpt --class='chatgpt' --kiosk --new-window 'https://chatgpt.com'")
+
+-- background scripts
+awful.spawn.with_shell("rclone sync gdrive:/vocal-training/ ~/Videos/vocal-training/")

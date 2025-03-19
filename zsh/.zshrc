@@ -115,9 +115,7 @@ alias cdd="cd ~/Downloads"
 alias cdD="cd ~/Documents"
 alias cddf="cd ~/dotfiles"
 alias cdv="cd ~/Videos"
-
-alias vocal="cd ~/Videos/vocal-training"
-alias vocal-sync="rclone sync gdrive:/vocal-training/ ~/Videos/vocal-training/"
+alias cdvocal="cd ~/Videos/vocal-training"
 
 alias vol="alsamixer"
 

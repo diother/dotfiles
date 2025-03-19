@@ -1,0 +1,19 @@
+#!/bin/bash
+
+VENV_DIR="/home/robert/personal/whisper/"
+VIDEO_DIR="/home/robert/Videos/vocal-training/"
+REMOTE_DIR="gdrive:/vocal-training/"
+TRANSCRIPT_SCRIPT="/home/robert/dotfiles/bin/bin/transcribe.py"
+OUTPUT_FILE="/home/robert/personal/brain/1-workspace/Vocal training.md"
+
+echo "Activating virtual environment..."
+source "$VENV_DIR/bin/activate"
+
+echo "Syncing video from Google Drive..."
+rclone sync "$REMOTE_DIR" "$VIDEO_DIR"
+
+echo "Transcribing video..."
+python "$TRANSCRIPT_SCRIPT"
+
+echo "Deactivating virtual environment..."
+deactivate

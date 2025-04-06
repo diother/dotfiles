@@ -20,14 +20,14 @@ def transcribe_video(video_path, output_file):
     result = model.transcribe(video_path_str)
     transcription = result["text"]
     
-    with open(output_file, "a") as file:
+    with open(output_file, "w") as file:
         file.write(transcription)
     
-    print(f"Transcription appended to {output_file}")
+    print(f"Transcription saved to {output_file}")
     
 if __name__ == "__main__":
     video_directory = os.path.expanduser("~/Videos/vocal-training/")
-    output_file = os.path.expanduser("~/personal/brain/1-workspace/Vocal training.md")
+    output_file = os.path.expanduser("~/personal/brain/1-workspace/Transcript")
     
     try:
         recent_video = get_most_recent_video(video_directory)

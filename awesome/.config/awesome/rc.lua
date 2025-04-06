@@ -227,26 +227,48 @@ awful.screen.connect_for_each_screen(function(s)
 		buttons = tasklist_buttons,
 	})
 
-	-- -- Create the wibox
-	-- s.mywibox = awful.wibar({ position = "top", screen = s })
-	--
-	-- -- Add widgets to the wibox
-	-- s.mywibox:setup {
-	--     layout = wibox.layout.align.horizontal,
-	--     { -- Left widgets
-	--         layout = wibox.layout.fixed.horizontal,
-	--         mylauncher,
-	--         -- s.mytaglist,
-	--         s.mypromptbox,
-	--     },
-	--     s.mytasklist, -- Middle widget
-	--     { -- Right widget
-	--         layout = wibox.layout.fixed.horizontal,
-	--         mytextclock,
-	--         spacer,
-	--         wibox.widget.systray()
-	--     },
-	-- }
+	-- Create the wibox
+	s.mywibox = awful.wibar({ position = "top", screen = s })
+
+	local pomodoro_widget = wibox.widget {
+		widget = wibox.widget.textbox,
+		align = "center",
+		valign = "center",
+		font = "monospace 14"
+	}
+
+	-- Function to update the widget with Pomodoro CLI status
+	local function update_pomodoro_status()
+		awful.spawn.easy_async("pomodoro-cli status", function(stdout)
+			-- Get the output from pomodoro-cli, and update the widget
+			pomodoro_widget.text = stdout:gsub("\n", "") -- Remove newline character
+		end)
+	end
+
+	-- Update the Pomodoro timer every 1 second (optional, adjust as needed)
+	gears.timer({
+		timeout = 1,
+		autostart = true,
+		callback = update_pomodoro_status
+	})
+
+	-- Add widgets to the wibox
+	s.mywibox:setup {
+		layout = wibox.layout.align.horizontal,
+		{ -- Left widgets
+			layout = wibox.layout.fixed.horizontal,
+			-- mylauncher,
+			-- s.mytaglist,
+			-- s.mypromptbox,
+		},
+		pomodoro_widget, -- Middle widget: Pomodoro timer
+		{          -- Right widget
+			layout = wibox.layout.fixed.horizontal,
+			-- mytextclock,
+			-- spacer,
+			-- wibox.widget.systray()
+		},
+	}
 end)
 -- }}}
 

@@ -25,7 +25,7 @@ run_custom_startup_script() {
 if [[ $# -eq 1 ]]; then
     directory=$1
 else
-    directory=$(find $HOME/dotfiles $HOME/work $HOME/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+    directory=$(find $HOME/dotfiles $HOME/work $HOME/personal $HOME/Videos/projects -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $directory ]]; then

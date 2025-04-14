@@ -641,4 +641,4 @@ awful.spawn.with_shell("firefox -P default-esr --class='firefox-esr'")
 awful.spawn.with_shell("firefox -P chatgpt --class='chatgpt' --kiosk --new-window 'https://chatgpt.com'")
 
 -- background scripts
-awful.spawn.with_shell("rclone sync gdrive:/vocal-training/ ~/Videos/vocal-training/")
+awful.spawn.with_shell("vocalsync")

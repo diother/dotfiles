@@ -1,0 +1,7 @@
+#!/bin/bash
+
+REMOTE_DIR="gdrive:/vocal-training/"
+VIDEO_DIR="/home/robert/Videos/vocal-training/"
+
+echo "Syncing video from Google Drive..."
+rclone sync "$REMOTE_DIR" "$VIDEO_DIR"

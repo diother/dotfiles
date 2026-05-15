@@ -119,23 +119,14 @@ alias cdvocal="cd ~/Videos/vocal-training"
 
 alias vol="alsamixer"
 
+alias browser="firefox -P default-esr --class='firefox-esr' &"
+alias chatgpt="firefox -P chatgpt --class='chatgpt' --kiosk --new-window 'https://chatgpt.com' &"
+
 alias pomo150="pomodoro-cli start --duration '150m'"
 alias pomo90="pomodoro-cli start --duration '90m'"
 alias pomo30="pomodoro-cli start --duration '30m'"
 alias pomostop="pomodoro-cli stop"
 
-# yazi_insert_and_enter() {
-#   LBUFFER+="yazi"
-#   zle accept-line
-# }
-# zle -N yazi_insert_and_enter
-# bindkey '^Y' yazi_insert_and_enter
-
-
-# pnpm
-export PNPM_HOME="/home/robert/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

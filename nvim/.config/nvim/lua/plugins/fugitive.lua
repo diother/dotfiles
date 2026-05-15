@@ -10,6 +10,10 @@ return {
         vim.cmd.Git "commit"
         vim.cmd "on"
       end)
+      vim.keymap.set("n", "<leader>gp", function()
+        vim.cmd.Git "push"
+        vim.cmd "on"
+      end)
     end,
   },
 }

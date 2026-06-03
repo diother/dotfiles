@@ -27,6 +27,8 @@ vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 
+vim.keymap.set('n', '<Tab>', '<C-^>', { desc = "Toggle alternate file" })
+
 vim.keymap.set("n", "<leader>es", ":!~/work/go-invoices/scripts/start<CR>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
